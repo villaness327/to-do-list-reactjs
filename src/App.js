@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+//import './App.css';
 
-function App(props) {
+const todos=[
+//Listado de tareas hardcodeados
+  {text:"Lavar auto",completed:false},
+  {text:"Cortar el pelo",completed:false},
+  {text:"Preparar almuerzo",completed:false},
+  {text:"Jugar Tennis",completed:false},
+
+];
+
+
+function App() {
+  //React.Fragment:cada componente tiene que devolver el contenido en una etiqueta contenedora
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-         {props.children}
-        </a>
-      </header>
-    </div>
+  <React.Fragment>
+
+    <TodoCounter />
+    <TodoSearch />
+
+      <TodoList>
+
+         {todos.map(todo=>(
+          //Por cada elemento del arreglo se renderida un componente 
+
+                  <TodoItem />
+              )
+         )}
+          
+      </TodoList>
+
+     <CreateTodoButton/>
+
+     <button>+</button>
+
+  </React.Fragment>  
   );
 }
 
+
 export default App;
+
+
+//Este es el componente PADRE de la Aplicacion
