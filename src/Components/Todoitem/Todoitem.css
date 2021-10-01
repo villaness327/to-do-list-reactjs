@@ -1,0 +1,23 @@
+.Todo_Item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: aquamarine;
+    width: 80%;
+    height: 50px; 
+    margin: 0 auto 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.Todo_Item--close{
+    position: absolute;
+    top:0px;
+    right: 0px;
+
+
+
+
+
+}

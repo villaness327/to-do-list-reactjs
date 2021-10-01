@@ -5,7 +5,7 @@ import './Todocounter.css';
 function Todocounter(){
     return(
 
-    <h1>Haz completado 2 de 3 Tareas</h1>
+    <p className="Todocounter">Haz completado 2 de 3 Tareas</p>
 
     );
 

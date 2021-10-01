@@ -5,7 +5,7 @@ function Todotitle(){
     return(
 
 
-       <h1>To-Do List App</h1>
+       <h1 className="title">To-Do List App</h1>
 
     );
 
