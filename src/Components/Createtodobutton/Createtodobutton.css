@@ -2,21 +2,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
+    position: fixed;
+    bottom:24px;
+    right: 0px;
     background-color:orange;
     width: 54px;
     height: 54px;
-    border-radius: 50%;
-    top:-30px;
-    right: 5px;
+    border-radius: 50%; 
     font-size: 5.0rem;
     font-weight: bold;
     transform: rotate(0);
     transition: .3s ease;
     z-index: 1;
     color:white;
-
-
+    border:none;
+    margin-bottom: 10px;
 }
 
 .TodoButton:hover{
@@ -24,7 +24,3 @@
   transform: rotate(360deg);
 }
 
-.container_button{
- 
-    position: relative;
-}

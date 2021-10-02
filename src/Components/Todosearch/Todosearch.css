@@ -12,3 +12,21 @@
     border-radius: 5px;
     margin-bottom: 10px;
 }
+
+.Todosearch:focus{
+
+outline-color:orange;
+
+
+}
+
+.Todosearch::placeholder{
+
+    font-weight: 400;
+    font-size: 1.5rem;
+
+
+
+
+
+}

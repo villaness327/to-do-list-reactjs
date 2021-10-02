@@ -6,14 +6,14 @@ function Todolist(props){
 
     return(
 
-    <section>
-        <ul>
+                <section>
+                    <ul>
 
-           {props.children}
+                    {props.children}
 
-        </ul>
+                    </ul>
 
-    </section>
+                </section>
     );
 }
 

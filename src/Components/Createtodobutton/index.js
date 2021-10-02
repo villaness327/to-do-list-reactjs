@@ -4,16 +4,9 @@ import './Createtodobutton.css';
 
 function Createtodobutton(){
 
-    return(
-
-        <React.Fragment>
-
-        <div className="container_button">
-
+    return(  
             <button className="TodoButton">+</button>
-
-        </div>
-        </React.Fragment>
+    
     );
 }
 

@@ -4,11 +4,23 @@
     align-items: center;
     position: relative;
     background-color: aquamarine;
-    width: 70%;
+    width: 80%;
     height: 50px; 
     margin: 0 auto 10px;
     font-size: 1.5rem;
     font-weight: bold;
+}
+.Todo_Item--Text{
+    font-size: 1.5rem;
+ 
+
+
+
+}
+.Todo_Item--Text-complete{
+
+    text-decoration:line-through
+
 }
 
 .Todo_Item--close{
@@ -20,9 +32,28 @@
 .fa-times-circle{
 
     font-size: 2.0rem;
-    color:black;
+    color: black;
+}
 
-  
+.Todo_Item--check{
 
+    position: absolute;
+    left: 0px;
+
+}
+
+
+
+.fa-check-circle{
+
+  font-size: 3.0rem;
+  color:red;
+
+
+}
+
+.check-complete{
+ 
+    color:green;
 
 }

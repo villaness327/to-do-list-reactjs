@@ -5,14 +5,13 @@ import './Todosearch.css';
 
 function Todosearch(){
 
-        return(
-       <React.Fragment>
+        return(      
 
                 <div className="SearchContainer">
-                   <input className="Todosearch" placeholder="Ingrese Tarea..."></input>
+                   <input className="Todosearch" placeholder="Busque una Tarea..."></input>
                 </div>
        
-       </React.Fragment>
+
         );
 }
 

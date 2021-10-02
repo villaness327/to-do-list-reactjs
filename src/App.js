@@ -5,20 +5,21 @@ import { Todosearch } from './Components/Todosearch';
 import { Todolist } from './Components/Todolist';
 import { Todoitem } from './Components/Todoitem';
 import { Createtodobutton } from './Components/Createtodobutton';
+import { Todofooter } from './Components/Todofooter';
 
 //import './App.css';
 
 const todos=[
-  {text:'Estudiar Ingles',completed:true},
-  {text: 'Pasear Perro',completed:true},
-  {text:'Comprar Pan',completed:false},
-  {text:'Cortarme el pelo',completed:false},
-  {text:'Ir al supermercado',completed:true},
-  {text:'Estudiar Ingles',completed:true},
-  {text: 'Pasear Perro',completed:true},
-  {text:'Comprar Pan',completed:false},
-  {text:'Cortarme el pelo',completed:false},
-  {text:'Ir al supermercado',completed:true}
+  {text:'Estudiar Ingles',complete:true},
+  {text: 'Pasear Perro',complete:true},
+  {text:'Comprar Pan',complete:false},
+  {text:'Cortarme el pelo',complete:true},
+  {text:'Ir al supermercado',complete:true},
+  {text:'Lavar Auto',complete:true},
+  {text: 'Andar en bicicleta',complete:true},
+  {text:'salir a correr',complete:false},
+  {text:'Tomar un curso online',complete:false},
+  {text:'Leer un libro, y sacar a pasear al perro',complete:true}
 ];
 
 
@@ -38,14 +39,18 @@ function App() {
 
                       {todos.map(todo=>(              
 
-                                <Todoitem key={todo.text} text={todo.text} />
+                                <Todoitem
+                                key={todo.text} 
+                                text={todo.text}
+                                complete={todo.complete} />
                             )
                       )}
                         
                   </Todolist>
 
-                  <Createtodobutton/>       
+                  <Createtodobutton/>
 
+                  <Todofooter/>
               </React.Fragment>  
                 );
               }
