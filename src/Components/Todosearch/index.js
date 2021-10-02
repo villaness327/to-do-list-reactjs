@@ -9,7 +9,7 @@ function Todosearch(){
        <React.Fragment>
 
                 <div className="SearchContainer">
-                   <input className="Todosearch" placeholder="Ingrese Tarea"></input>
+                   <input className="Todosearch" placeholder="Ingrese Tarea..."></input>
                 </div>
        
        </React.Fragment>

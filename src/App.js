@@ -13,6 +13,11 @@ const todos=[
   {text: 'Pasear Perro',completed:true},
   {text:'Comprar Pan',completed:false},
   {text:'Cortarme el pelo',completed:false},
+  {text:'Ir al supermercado',completed:true},
+  {text:'Estudiar Ingles',completed:true},
+  {text: 'Pasear Perro',completed:true},
+  {text:'Comprar Pan',completed:false},
+  {text:'Cortarme el pelo',completed:false},
   {text:'Ir al supermercado',completed:true}
 ];
 
