@@ -12,11 +12,9 @@
 }
 .Todo_Item--Text{
     font-size: 1.5rem;
- 
-
-
-
 }
+
+
 .Todo_Item--Text-complete{
 
     text-decoration:line-through

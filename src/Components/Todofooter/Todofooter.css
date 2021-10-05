@@ -1,7 +1,10 @@
 
 .footer{
-  margin-top: 50px;
+
   text-align: center;
+  position: fixed;
+  bottom: -150px;
+
 }
 
 
@@ -14,4 +17,9 @@
     text-align: center;
     background-color:black;
     padding: 5px;
+   
+}
+
+li:last-child{
+  margin-bottom: 150px;
 }
