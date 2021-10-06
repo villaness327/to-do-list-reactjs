@@ -10,11 +10,11 @@ import { Todofooter } from './Components/Todofooter';
 //import './App.css';
 
 const defaultTodos=[
-  {text:'Estudiar Ingles',complete:true},
+  {text:'Estudiar Ingles',complete:false},
   {text: 'Pasear Perro',complete:true},
   {text:'Comprar Pan',complete:true},
   {text:'Cortarme el pelo',complete:true},
-  {text:'Ir al supermercado',complete:true},
+  {text:'Ir al supermercado',complete:false},
   {text:'Lavar Auto',complete:true},
   {text: 'Andar en bicicleta',complete:true},
   {text:'salir a correr',complete:true},
@@ -50,7 +50,22 @@ function App() {
 
       });
   }    
-  
+
+     const completeTodos=(text)=>{
+
+       const todoIndex=todos.findIndex(todo=>todo.text===text);
+       //Se encuentra el index dentro del array todos, segun el texto recibido
+
+       const newTodos=[...todos];//Se copia el orginal
+
+       newTodos[todoIndex].complete=!newTodos[todoIndex].complete;
+       //El valor de complete, va a cambiar siempre al estado contrario, cada vez que 
+       //se ejecuta la funcion
+
+       setTodos(newTodos);//se llama a la funcion modificador del estado
+
+    };
+
   return (
               
               <React.Fragment>
@@ -68,13 +83,14 @@ function App() {
                   />
                   
                   <Todolist>
-
-                      {searchedTodos.map(todo=>(              
+                      {searchedTodos.map(todo=>( 
+                      //Por cada elemento del arreglo             
 
                                 <Todoitem
-                                key={todo.text} 
-                                text={todo.text}
-                                complete={todo.complete} />
+                                key={todo.text}    //Se envia el key
+                                text={todo.text}   //Se envia texto
+                                complete={todo.complete} //estado completado true o false
+                                onComplete={()=>completeTodos(todo.text)}/>//Se envia la funcion como props
                             )
                       )}
                         
@@ -84,9 +100,8 @@ function App() {
 
                   <Todofooter/>
               </React.Fragment>  
-                );
-
-
+        );
 
 }
+
 export default App;

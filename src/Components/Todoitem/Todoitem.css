@@ -10,47 +10,36 @@
     font-size: 1.5rem;
     font-weight: bold;
 }
+
+
 .Todo_Item--Text{
     font-size: 1.5rem;
 }
 
 
-.Todo_Item--Text-complete{
+.Text_Complete{
 
     text-decoration:line-through
 
 }
 
-.Todo_Item--close{
+.Todo_Item--Close{
     position: absolute;
     top:-5px;
     right: -5px;
 }
 
-.fa-times-circle{
-
-    font-size: 2.0rem;
-    color: black;
-}
-
-.Todo_Item--check{
+.Todo_Item--Check{ 
 
     position: absolute;
     left: 0px;
-
+    color:red;
+    content: "\2611";
+    font-size: 3.0rem;
+  
 }
-
-
-
-.fa-check-circle{
-
-  font-size: 3.0rem;
-  color:red;
-
-
-}
-
-.check-complete{
+   
+.Check_Complete{
  
     color:green;
 
