@@ -3,11 +3,6 @@ import './Todoitem.css';
 
 function Todoitem(props){
  
-  const onDelete=()=>{
-
-    alert('Eliminaste la tarea '+ props.text)
-
-  }
 
   //Si se envia algun parametro en la funcion, es necesario envolverlo en una arrow function
     return(
@@ -17,7 +12,7 @@ function Todoitem(props){
 
               <p className={`Todo_Item--Text ${props.complete && 'Text_Complete'}`}>{props.text}</p>
 
-              <span className="Todo_Item--Close" onClick={onDelete}><i className="fas fa-times-circle"></i></span>
+              <span className="Todo_Item--Close" onClick={props.onDelete}><i className="fas fa-times-circle"></i></span>
             </li>
 
     );

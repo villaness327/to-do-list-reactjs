@@ -1,11 +1,11 @@
 import React from 'react';
-import { Todotitle } from './Components/Todotitle';
-import { Todocounter } from './Components/Todocounter';
-import { Todosearch } from './Components/Todosearch';
-import { Todolist } from './Components/Todolist';
-import { Todoitem } from './Components/Todoitem';
-import { Createtodobutton } from './Components/Createtodobutton';
-import { Todofooter } from './Components/Todofooter';
+import { Todotitle } from '../Todotitle';
+import { Todocounter } from '../Todocounter';
+import { Todosearch } from '../Todosearch';
+import { Todolist } from '../Todolist';
+import { Todoitem } from '../Todoitem';
+import { Createtodobutton } from '../Createtodobutton';
+import { Todofooter } from '../Todofooter';
 
 //import './App.css';
 
@@ -23,10 +23,13 @@ const defaultTodos=[
 ];
 
 
+//Logica de la Aplicacion
+
 function App() {
   //React.Fragment:cada componente tiene que devolver el contenido en una etiqueta contenedora
   
   const[todos,setTodos]=React.useState(defaultTodos);
+
   const [searchValue,setSearchValue]=React.useState('');
   //React hook
 
@@ -51,7 +54,7 @@ function App() {
       });
   }    
 
-     const completeTodos=(text)=>{
+     const completeTodo=(text)=>{
 
        const todoIndex=todos.findIndex(todo=>todo.text===text);
        //Se encuentra el index dentro del array todos, segun el texto recibido
@@ -66,6 +69,24 @@ function App() {
 
     };
 
+
+    const deleteTodo=(text)=>{
+
+        const todoIndex=todos.findIndex(todo=>todo.text===text);
+         //Se encuentra el index dentro del array todos, segun el texto recibido
+
+        const newTodos=[...todos];
+        console.log(newTodos[todoIndex]);
+
+        newTodos.splice(todoIndex,1);
+        //Se elimina el elemento del arreglo
+
+        setTodos(newTodos);
+    }
+
+
+
+    //Maquetacion UI
   return (
               
               <React.Fragment>
@@ -90,8 +111,10 @@ function App() {
                                 key={todo.text}    //Se envia el key
                                 text={todo.text}   //Se envia texto
                                 complete={todo.complete} //estado completado true o false
-                                onComplete={()=>completeTodos(todo.text)}/>//Se envia la funcion como props
-                            )
+                                onComplete={()=>completeTodo(todo.text)}//Se envia la funcion como props
+                                onDelete={()=>deleteTodo(todo.text)}/>
+                             
+                                )
                       )}
                         
                   </Todolist>
