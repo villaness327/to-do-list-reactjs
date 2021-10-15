@@ -3,6 +3,7 @@ import { AppUI } from './AppUI';
 
 //import './App.css';
 
+/*
 const defaultTodos=[
   {text:'Estudiar Ingles',complete:false},
   {text: 'Pasear Perro',complete:true},
@@ -14,15 +15,31 @@ const defaultTodos=[
   {text:'salir a correr',complete:true},
   {text:'Tomar un curso online',complete:true},
   {text:'Leer un libro, y sacar a pasear al perro',complete:true}
-];
+];*/
 
 
-//Logica de la Aplicacion
+//Logica de la Aplicacions
 
 function App() {
-  //React.Fragment:cada componente tiene que devolver el contenido en una etiqueta contenedora
-  
-  const[todos,setTodos]=React.useState(defaultTodos);
+
+  const localStorageTodos=localStorage.getItem('TODOS_V1');
+
+  let parsedTodos;
+
+    if(!localStorageTodos){
+      
+      localStorage.setItem('TODOS_V1',JSON.stringify([]));  //Actualizacion Estado, array vacio default
+      parsedTodos=[]; // Actualizacion Data App 
+
+    }else{
+   
+      parsedTodos=JSON.parse(localStorageTodos); //Datos almacenados, se convierte de string a JS
+
+    }
+
+
+
+  const[todos,setTodos]=React.useState(parsedTodos);
 
   const [searchValue,setSearchValue]=React.useState('');
   //React hook
@@ -48,6 +65,19 @@ function App() {
       });
   }    
 
+
+     const saveTodos=(newTodos)=>{
+
+        const stringfied=JSON.stringify(newTodos); //Array convertido a string
+        localStorage.setItem('TODOS_V1',stringfied); //Persistencia datos en localstorage
+        setTodos(newTodos); //Actualizacion de estado
+
+     }
+
+
+
+
+
      const completeTodo=(text)=>{
 
        const todoIndex=todos.findIndex(todo=>todo.text===text);
@@ -59,7 +89,7 @@ function App() {
        //El valor de complete, va a cambiar siempre al estado contrario, cada vez que 
        //se ejecuta la funcion
 
-       setTodos(newTodos);//se llama a la funcion modificador del estado
+      saveTodos(newTodos);//se llama a la funcion modificador del estado
 
     };
 
@@ -75,7 +105,7 @@ function App() {
         newTodos.splice(todoIndex,1);
         //Se elimina el elemento del arreglo
 
-        setTodos(newTodos);
+       saveTodos(newTodos);
     }
 
 
@@ -83,15 +113,15 @@ function App() {
   return (
            
           <AppUI
-          
-            completedTodos={completedTodos}
-            totalTodos={totalTodos}
-            setSearchValue={setSearchValue}
-            searchValue={searchValue}
-            searchedTodos={searchedTodos}
-            completeTodo={completeTodo}
-            deleteTodo={deleteTodo}
-          
+
+                completedTodos={completedTodos}
+                totalTodos={totalTodos}
+                setSearchValue={setSearchValue}
+                searchValue={searchValue}
+                searchedTodos={searchedTodos}
+                completeTodo={completeTodo}
+                deleteTodo={deleteTodo}
+              
           />
           
         );
