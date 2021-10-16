@@ -18,28 +18,52 @@ const defaultTodos=[
 ];*/
 
 
-//Logica de la Aplicacions
+//Custom React Hook para localStorage
+
+function useLocalStorage(itemName,initialValue){
+
+      //Rescate de datos desde localstorage
+
+      const localStorageItem=localStorage.getItem(itemName);
+
+      let parsedItem;
+
+      if(!localStorageItem){
+        
+        localStorage.setItem(itemName,JSON.stringify(initialValue));  //Actualizacion Estado, se crea el item con valor inicial default
+        parsedItem=initialValue; // Actualizacion Data App 
+
+      }else{
+    
+        parsedItem=JSON.parse(localStorageItem); //Datos almacenados, se convierte de string a JS
+
+      }
+
+      const[item,setItem]=React.useState(parsedItem);
+
+
+      //Persistencia de datos en localstorage y estado
+      const saveItem=(newItem)=>{
+        const stringfied=JSON.stringify(newItem); //Array convertido a string
+        localStorage.setItem(itemName,stringfied); //Persistencia datos en localstorage
+        setItem(newItem); //Actualizacion de estado
+      }
+
+
+    return [item,saveItem];
+
+}
+
+
+//Logica de la Aplicacion
 
 function App() {
 
-  const localStorageTodos=localStorage.getItem('TODOS_V1');
+  //Llamada al custom react hook
+  const [todos, saveTodos]=useLocalStorage('TODOS_V1',[]); 
+  //array[0]:estado
+  //array[1]:funcion que guarda los datos(en localstorage y estado)
 
-  let parsedTodos;
-
-    if(!localStorageTodos){
-      
-      localStorage.setItem('TODOS_V1',JSON.stringify([]));  //Actualizacion Estado, array vacio default
-      parsedTodos=[]; // Actualizacion Data App 
-
-    }else{
-   
-      parsedTodos=JSON.parse(localStorageTodos); //Datos almacenados, se convierte de string a JS
-
-    }
-
-
-
-  const[todos,setTodos]=React.useState(parsedTodos);
 
   const [searchValue,setSearchValue]=React.useState('');
   //React hook
@@ -65,31 +89,18 @@ function App() {
       });
   }    
 
-
-     const saveTodos=(newTodos)=>{
-
-        const stringfied=JSON.stringify(newTodos); //Array convertido a string
-        localStorage.setItem('TODOS_V1',stringfied); //Persistencia datos en localstorage
-        setTodos(newTodos); //Actualizacion de estado
-
-     }
-
-
-
-
-
      const completeTodo=(text)=>{
 
        const todoIndex=todos.findIndex(todo=>todo.text===text);
        //Se encuentra el index dentro del array todos, segun el texto recibido
 
-       const newTodos=[...todos];//Se copia el orginal
+       const newTodos=[...todos];//Se copia el array del estado orginal
 
        newTodos[todoIndex].complete=!newTodos[todoIndex].complete;
        //El valor de complete, va a cambiar siempre al estado contrario, cada vez que 
        //se ejecuta la funcion
 
-      saveTodos(newTodos);//se llama a la funcion modificador del estado
+      saveTodos(newTodos);//se llama a la funcion modificadora del estado
 
     };
 
@@ -105,27 +116,21 @@ function App() {
         newTodos.splice(todoIndex,1);
         //Se elimina el elemento del arreglo
 
-       saveTodos(newTodos);
+       saveTodos(newTodos);//se llama a la funcion modificadora del estado
     }
 
-
 //Retorna el componente que contiene la maquetacion UI,y se envian props
-  return (
-           
+  return (      
           <AppUI
-
                 completedTodos={completedTodos}
                 totalTodos={totalTodos}
                 setSearchValue={setSearchValue}
                 searchValue={searchValue}
                 searchedTodos={searchedTodos}
                 completeTodo={completeTodo}
-                deleteTodo={deleteTodo}
-              
+                deleteTodo={deleteTodo}              
           />
-          
-        );
-
+  );
 }
 
 export default App;

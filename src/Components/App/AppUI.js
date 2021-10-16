@@ -21,7 +21,8 @@ function AppUI({
 }){
     
     //Maquetacion UI
-    //React.Fragment:cada componente tiene que devolver el contenido en una etiqueta contenedora
+    //React.Fragment:Un componente tiene que devolver el contenido en una etiqueta contenedora, que 
+    //envuelva los componentes del return
     return(
         <React.Fragment>
 
