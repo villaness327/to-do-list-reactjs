@@ -17,41 +17,77 @@ const defaultTodos=[
   {text:'Leer un libro, y sacar a pasear al perro',complete:true}
 ];*/
 
-
 //Custom React Hook para localStorage
 
 function useLocalStorage(itemName,initialValue){
-
       //Rescate de datos desde localstorage
-
-      const localStorageItem=localStorage.getItem(itemName);
-
-      let parsedItem;
-
-      if(!localStorageItem){
+      
+      
+      const[item,setItem]=React.useState(initialValue); 
+      const[loading,setLoading]=React.useState(true);
+      const[error,setError]=React.useState(false);
         
-        localStorage.setItem(itemName,JSON.stringify(initialValue));  //Actualizacion Estado, se crea el item con valor inicial default
-        parsedItem=initialValue; // Actualizacion Data App 
+      React.useEffect(()=>{
+        //Bloque de codigo que se ejecuta de manera automatica
+        //Use effect se ejecuta solo una vez, si se cumple condicion 
+        //En la carga del Localstorage se hace 
+        //Simulacion a un fetch Api, se genera un tiempo de consulta   
+              
+          setTimeout(() => {
 
-      }else{
-    
-        parsedItem=JSON.parse(localStorageItem); //Datos almacenados, se convierte de string a JS
+              try{
 
-      }
+                    const localStorageItem=localStorage.getItem(itemName);
 
-      const[item,setItem]=React.useState(parsedItem);
+                    let parsedItem;
+                  
+                    if(!localStorageItem){
+                          
+                      localStorage.setItem(itemName,JSON.stringify(initialValue));  //Actualizacion Estado, se crea el item con valor inicial default
+                      parsedItem=initialValue; // Actualizacion Data App 
+                  
+                    }else{
 
+                        parsedItem=JSON.parse(localStorageItem); //Datos almacenados, se convierte de string a JS
+                  
+                    }
+                  
+                    setItem(parsedItem);
 
-      //Persistencia de datos en localstorage y estado
-      const saveItem=(newItem)=>{
-        const stringfied=JSON.stringify(newItem); //Array convertido a string
-        localStorage.setItem(itemName,stringfied); //Persistencia datos en localstorage
-        setItem(newItem); //Actualizacion de estado
-      }
+                    setLoading(false);  
+               
+                  }catch(error){
+                    setError(error);
 
+                }       
+                    
+           }, 2000);      
+      });     
 
-    return [item,saveItem];
+        //Persistencia de datos en localstorage y estado
+        const saveItem=(newItem)=>{
 
+           try{
+            const stringfied=JSON.stringify(newItem); //Array convertido a string
+            localStorage.setItem(itemName,stringfied); //Persistencia datos en localstorage
+            setItem(newItem); //Actualizacion de estado
+
+           }catch(error){
+
+            setError(error);
+
+           }       
+        }
+         /*
+         Cuando se hace un return de mas de dos estados, se debe usar objeto
+         return [item,saveItem, loading,error];*/
+          
+         return {
+           item,
+           saveItem, 
+           loading,
+           error
+          };
 }
 
 
@@ -60,10 +96,10 @@ function useLocalStorage(itemName,initialValue){
 function App() {
 
   //Llamada al custom react hook
-  const [todos, saveTodos]=useLocalStorage('TODOS_V1',[]); 
-  //array[0]:estado
-  //array[1]:funcion que guarda los datos(en localstorage y estado)
-
+  const {item:todos,saveItem:saveTodos,loading,error}=useLocalStorage('TODOS_V1',[]); 
+  //todos:estado
+  //saveTodos:funcion que guarda los datos(en localstorage y estado)
+  //loading:estado
 
   const [searchValue,setSearchValue]=React.useState('');
   //React hook
@@ -75,17 +111,19 @@ function App() {
 
   if(!searchValue>=1){
 
-        searchedTodos=todos;//Arreglo por defecto del estado
+        searchedTodos=todos;
+        //Arreglo por defecto del estado
 
-      }else{
+      }else{   
 
+        //Filtro de acuerdo a lo ingresado por usuario
         searchedTodos=todos.filter(todo=>{
 
-          const searchText=searchValue.toLowerCase();
-          const todoText=todo.text.toLowerCase();
+        const searchText=searchValue.toLowerCase();
+        const todoText=todo.text.toLowerCase();
 
           return todoText.includes(searchText);
-           //Filtro de acuerdo a lo ingresado por usuario
+         
       });
   }    
 
@@ -119,6 +157,8 @@ function App() {
        saveTodos(newTodos);//se llama a la funcion modificadora del estado
     }
 
+ 
+
 //Retorna el componente que contiene la maquetacion UI,y se envian props
   return (      
           <AppUI
@@ -128,7 +168,9 @@ function App() {
                 searchValue={searchValue}
                 searchedTodos={searchedTodos}
                 completeTodo={completeTodo}
-                deleteTodo={deleteTodo}              
+                deleteTodo={deleteTodo}  
+                loading={loading}   
+                error={error}         
           />
   );
 }

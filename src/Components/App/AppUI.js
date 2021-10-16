@@ -6,10 +6,16 @@ import { Todolist } from '../Todolist';
 import { Todoitem } from '../Todoitem';
 import { Createtodobutton } from '../Createtodobutton';
 import { Todofooter } from '../Todofooter';
+import { Createtodo } from '../Createtodo';
+import {Error} from '../Error';
+import {Loading} from '../Loading';
 
 
 function AppUI({
  //Se reciben las props desde el componente App
+
+    loading,
+    error,
     completedTodos,
     totalTodos,
     setSearchValue,
@@ -38,6 +44,12 @@ function AppUI({
         setSearchValue={setSearchValue}   //Se envia el estado              
         />
         
+        {/*Estados*/}
+        {loading && <Loading />}
+        {error && <Error />}
+        {(!loading && !searchedTodos.length) && <Createtodo/>}
+
+
         <Todolist>
             {searchedTodos.map(todo=>( 
             //Por cada elemento del arreglo             
