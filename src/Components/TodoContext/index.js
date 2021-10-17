@@ -1,7 +1,7 @@
 import React from 'react';
 import {useLocalStorage} from './useLocalStorage';
 
-const TodoContext=React.createContext();
+const TodoContext=React.createContext(); //Se crea el contexto
 
 function TodoProvider(props){
 
@@ -11,9 +11,10 @@ function TodoProvider(props){
   //todos:estado
   //saveTodos:funcion que guarda los datos(en localstorage y estado)
   //loading:estado
+  //error:estado
 
   const [searchValue,setSearchValue]=React.useState('');
-  //React hook
+  //React hook de estado
 
   const completedTodos=todos.filter(todo=>todo.complete===true).length;
   const totalTodos=todos.length;
@@ -23,7 +24,7 @@ function TodoProvider(props){
   if(!searchValue>=1){
 
         searchedTodos=todos;
-        //Arreglo por defecto del estado
+        //Arreglo que tenga almacenado el estado
 
       }else{   
 
@@ -70,7 +71,7 @@ function TodoProvider(props){
 
 
     return(
-        //value es un objeto
+        //value es un objeto, envuelve todos los estados y variables que se compartiran en el contexto
         <TodoContext.Provider value={{
           
           loading,
@@ -84,7 +85,8 @@ function TodoProvider(props){
           deleteTodo,
           }}>
 
-            {props.children}
+            {props.children}  
+            {/*Aqui se almacena el componente AppUI*/}
 
         </TodoContext.Provider>
     );

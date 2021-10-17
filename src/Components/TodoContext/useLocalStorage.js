@@ -27,17 +27,20 @@ function useLocalStorage(itemName,initialValue){
                 
                   if(!localStorageItem){
                         
-                    localStorage.setItem(itemName,JSON.stringify(initialValue));  //Actualizacion Estado, se crea el item con valor inicial default
+                    localStorage.setItem(itemName,JSON.stringify(initialValue)); 
+                    //Se crea el eatado en localstorage,  con valor inicial default
+                   
                     parsedItem=initialValue; // Actualizacion Data App 
                 
                   }else{
 
-                      parsedItem=JSON.parse(localStorageItem); //Datos almacenados, se convierte de string a JS
+                      parsedItem=JSON.parse(localStorageItem); 
+                    //Si ya hay datos almacenados, se convierten de string a JS
                 
                   }
                 
-                  setItem(parsedItem);
-                  setLoading(false);  
+                  setItem(parsedItem); //Se modifica el estado en Localstorage
+                  setLoading(false);   // El valor estado de loading pasa a falso
              
                 }catch(error){
                   setError(error);

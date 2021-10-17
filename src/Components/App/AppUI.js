@@ -8,9 +8,8 @@ import { Todoitem } from '../Todoitem';
 import { Createtodobutton } from '../Createtodobutton';
 import { Todofooter } from '../Todofooter';
 import { Createtodo } from '../Createtodo';
-import {Error} from '../Error';
-import {Loading} from '../Loading';
-
+import { Error } from '../Error';
+import { Loading } from '../Loading';
 
 
 function AppUI(){
@@ -29,6 +28,8 @@ function AppUI(){
         
 
           <TodoContext.Consumer>
+
+           {/*Se recibe en forma de funcion*/}   
           {({loading,error,searchedTodos,completeTodo,deleteTodo})=>(
 
                         <Todolist>
@@ -46,26 +47,19 @@ function AppUI(){
                                     text={todo.text}   //Se envia texto
                                     complete={todo.complete} //estado completado true o false
                                     onComplete={()=>completeTodo(todo.text)}//Se envia la funcion como props
-                                    onDelete={()=>deleteTodo(todo.text)}/>
-                                
+                                    onDelete={()=>deleteTodo(todo.text)}/>                                
                                     )
                             )}
                         
                         </Todolist>
-                        
-                                      
- 
           )}
 
-          </TodoContext.Consumer>   
-       
-
+          </TodoContext.Consumer>
         <Createtodobutton/>
 
         <Todofooter/>
     </React.Fragment>  
     );
-
 }
 
 export {AppUI}
