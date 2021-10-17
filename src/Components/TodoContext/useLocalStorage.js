@@ -1,14 +1,15 @@
-import React from 'react ';
+import React from 'react';
 
 //Custom React Hook para localStorage
 
 function useLocalStorage(itemName,initialValue){
     //Rescate de datos desde localstorage
     
-    
-    const[item,setItem]=React.useState(initialValue); 
-    const[loading,setLoading]=React.useState(true);
     const[error,setError]=React.useState(false);
+    const[loading,setLoading]=React.useState(true);
+    const[item,setItem]=React.useState(initialValue); 
+  
+    
       
     React.useEffect(()=>{
       //Bloque de codigo que se ejecuta de manera automatica
