@@ -1,4 +1,5 @@
 import React from 'react';
+import  {TodoContext}  from '../TodoContext';
 import { Todotitle } from '../Todotitle';
 import { Todocounter } from '../Todocounter';
 import { Todosearch } from '../Todosearch';
@@ -11,20 +12,8 @@ import {Error} from '../Error';
 import {Loading} from '../Loading';
 
 
-function AppUI({
- //Se reciben las props desde el componente App
 
-    loading,
-    error,
-    completedTodos,
-    totalTodos,
-    setSearchValue,
-    searchValue,
-    searchedTodos,
-    completeTodo,
-    deleteTodo,
-
-}){
+function AppUI(){
     
     //Maquetacion UI
     //React.Fragment:Un componente tiene que devolver el contenido en una etiqueta contenedora, que 
@@ -32,39 +21,44 @@ function AppUI({
     return(
         <React.Fragment>
 
-        <Todotitle/>
+        <Todotitle />
 
-        <Todocounter
-        completedTodos={completedTodos}
-        totalTodos={totalTodos}    //Se envian las cantidades             
-        />
+        <Todocounter />
 
-        <Todosearch                  
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}   //Se envia el estado              
-        />
+        <Todosearch />       
         
-        {/*Estados*/}
-        {loading && <Loading />}
-        {error && <Error />}
-        {(!loading && !searchedTodos.length) && <Createtodo/>}
 
+          <TodoContext.Consumer>
+          {({loading,error,searchedTodos,completeTodo,deleteTodo})=>(
 
-        <Todolist>
-            {searchedTodos.map(todo=>( 
-            //Por cada elemento del arreglo             
+                        <Todolist>
 
-                      <Todoitem
-                      key={todo.text}    //Se envia el key
-                      text={todo.text}   //Se envia texto
-                      complete={todo.complete} //estado completado true o false
-                      onComplete={()=>completeTodo(todo.text)}//Se envia la funcion como props
-                      onDelete={()=>deleteTodo(todo.text)}/>
-                   
-                      )
-            )}
-              
-        </Todolist>
+                            {/*Estados*/}
+                            {loading && <Loading />}
+                            {error && <Error />}
+                            {(!loading && !searchedTodos.length) && <Createtodo/>}
+
+                            {searchedTodos.map(todo=>( 
+                            //Por cada elemento del arreglo             
+                
+                                    <Todoitem
+                                    key={todo.text}    //Se envia el key
+                                    text={todo.text}   //Se envia texto
+                                    complete={todo.complete} //estado completado true o false
+                                    onComplete={()=>completeTodo(todo.text)}//Se envia la funcion como props
+                                    onDelete={()=>deleteTodo(todo.text)}/>
+                                
+                                    )
+                            )}
+                        
+                        </Todolist>
+                        
+                                      
+ 
+          )}
+
+          </TodoContext.Consumer>   
+       
 
         <Createtodobutton/>
 
