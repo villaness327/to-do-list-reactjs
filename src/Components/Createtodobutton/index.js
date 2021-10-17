@@ -2,21 +2,17 @@ import React from 'react';
 import './Createtodobutton.css';
 
 
-function Createtodobutton(){
+function Createtodobutton(props){
 
-      const ButtonClick=(msg)=>{
+     const modalActivation=()=>{
 
-       alert(msg);
+          props.setOpenModal(prevState=>!prevState);
+          //Negacion del estado anterior
 
-      }
-
-
+     }
+   
     return(  
-            <button className="TodoButton" onClick={   
-                //Se envuelve en una arrow function  
-
-                     ()=>{ ButtonClick('Aca se abre un modal')}            
-            }
+            <button className="TodoButton" onClick={modalActivation}
             
             >+</button>
     

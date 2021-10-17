@@ -10,12 +10,21 @@ import { Todofooter } from '../Todofooter';
 import { Createtodo } from '../Createtodo';
 import { Error } from '../Error';
 import { Loading } from '../Loading';
+import { Modal } from '../Modal';
 
 
 function AppUI(){
     
     //React hook de usecontext
-    const {loading,error,searchedTodos,completeTodo,deleteTodo}=React.useContext(TodoContext);
+    const {
+        loading,
+        error,
+        searchedTodos,
+        completeTodo,
+        deleteTodo,
+        openModal,
+        setOpenModal
+    }=React.useContext(TodoContext);
 
     //Maquetacion UI
     //React.Fragment:Un componente tiene que devolver el contenido en una etiqueta contenedora, que 
@@ -49,7 +58,19 @@ function AppUI(){
                                     
                 </Todolist>  
 
-            <Createtodobutton/>
+             {!!openModal &&(
+
+                 //el modal se muestra solo si el estado openModal es verdadero
+                <Modal>
+                <p>{searchedTodos[0]?.text }</p>           
+                { /*Se consulta primero con ?, si el localstorage cargo los todos,para ahi imprimir el texto*/}           
+
+                </Modal> 
+             )}     
+
+            <Createtodobutton
+             setOpenModal={setOpenModal}       
+            />
 
         <Todofooter/>
     </React.Fragment>  
