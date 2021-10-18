@@ -4,6 +4,8 @@
   text-align: center;
   position: fixed;
   bottom: -150px;
+  width: 100%;
+  margin: 0 auto;
 
 }
 
@@ -17,6 +19,9 @@
     text-align: center;
     background-color:black;
     padding: 5px;
+    width: auto;
+    height: auto;
+
    
 }
 

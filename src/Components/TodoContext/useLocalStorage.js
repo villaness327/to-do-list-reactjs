@@ -47,7 +47,7 @@ function useLocalStorage(itemName,initialValue){
 
               }       
                   
-         }, 2000);      
+         }, 1000);      
     });     
 
       //Persistencia de datos en localstorage y estado
