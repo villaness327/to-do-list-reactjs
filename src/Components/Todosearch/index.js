@@ -19,7 +19,7 @@ function Todosearch(){
 
         return(      
           <div className="SearchContainer">
-          <input value={searchValue} className="Todosearch" placeholder="Busque una Tarea..." onChange={onChange}></input>
+          <input value={searchValue} className="Todosearch" placeholder="Busque una Tarea..." onChange={onChange} autofocus></input>
           </div>
 
         ); 
