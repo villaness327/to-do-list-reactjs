@@ -6,7 +6,7 @@ function Modal({children}){
 
     return ReactDom.createPortal(
         <div className="modalBg">
-            children
+            {children}
         </div>,
         document.getElementById('modal')//Nodo HTML donde se renderiza
     );

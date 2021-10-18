@@ -11,6 +11,7 @@ import { Createtodo } from '../Createtodo';
 import { Error } from '../Error';
 import { Loading } from '../Loading';
 import { Modal } from '../Modal';
+import { Todoform } from '../Todoform';
 
 
 function AppUI(){
@@ -62,8 +63,11 @@ function AppUI(){
 
                  //el modal se muestra solo si el estado openModal es verdadero
                 <Modal>
-                <p>{searchedTodos[0]?.text }</p>           
-                { /*Se consulta primero con ?, si el localstorage cargo los todos,para ahi imprimir el texto*/}           
+
+                    <Todoform />
+
+                {/*<p>searchedTodos[0]?.text }</p> */          
+                /*Se consulta primero con ?, si el localstorage cargo los todos,para ahi imprimir el texto*/}           
 
                 </Modal> 
              )}     
