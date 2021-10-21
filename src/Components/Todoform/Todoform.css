@@ -22,7 +22,9 @@ textarea{
 }
 
 textarea:focus{
+  
  outline-color: orange;
+
 }
 
 .buttonForm{

@@ -17,7 +17,13 @@ function TodoProvider(props){
   //React hook de estado
 
   const[openModal,setOpenModal]=React.useState(false);
-   //React hook de estado
+   //React hook de estado para modal formulario
+
+   const[openModalApp,setOpenModalApp]=React.useState(false);
+  //React hook de estado para modal app
+   
+  const [openModalAutor, setOpenModalAutor]=React.useState(false);
+  //React hook de estado para modal autor
    
   const completedTodos=todos.filter(todo=>todo.complete===true).length;
   const totalTodos=todos.length;
@@ -93,18 +99,22 @@ function TodoProvider(props){
         //value es un objeto, envuelve todos los estados y variables que se compartiran en el contexto
         <TodoContext.Provider value={{
           
-          loading,
-          error,
-          totalTodos,
-          completedTodos,
-          searchValue,
-          setSearchValue,
-          searchedTodos,
-          completeTodo,
-          deleteTodo,
-          openModal,
-          setOpenModal,
-          addTodo,
+              loading,
+              error,
+              totalTodos,
+              completedTodos,
+              searchValue,
+              setSearchValue,
+              searchedTodos,
+              completeTodo,
+              deleteTodo,
+              openModal,
+              setOpenModal,
+              addTodo,
+              openModalApp,                   
+              setOpenModalApp,
+              openModalAutor,
+              setOpenModalAutor,
           }}>
 
             {props.children}  

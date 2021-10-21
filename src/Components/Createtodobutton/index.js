@@ -1,12 +1,14 @@
 import React from 'react';
 import './Createtodobutton.css';
+import {TodoContext} from '../TodoContext';
 
+function Createtodobutton(){
 
-function Createtodobutton(props){
+     const {setOpenModal}=React.useContext(TodoContext);
 
      const modalActivation=()=>{
 
-          props.setOpenModal(prevState=>!prevState);
+           setOpenModal(prevState=>!prevState);
           //Negacion del estado anterior
 
      }

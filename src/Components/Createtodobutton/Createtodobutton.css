@@ -3,7 +3,8 @@
     justify-content: center;
     align-items: center;
     position: fixed;
-    bottom:24px;
+    z-index: 1;
+    bottom:50px;
     right: 0px;
     background-color:orange;
     width: 54px;
@@ -12,8 +13,7 @@
     font-size: 5.0rem;
     font-weight: bold;
     transform: rotate(0);
-    transition: .3s ease;
-    z-index: 1;
+    transition: .3s ease;   
     color:white;
     border:none;
     margin-bottom: 10px;

@@ -1,0 +1,35 @@
+.modalapp{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 90%;
+    height: 250px;  
+}
+
+.modalapp h2{
+    font-size: 1.8rem;
+    color:white;
+    border: 2px solid white;
+    padding: 20px;
+    margin-bottom: 5px;
+}
+
+.modalapp p,
+.modalapp ul{
+
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.modalapp button{
+
+    background-color: white;
+    color:black;
+    padding: 10px ;
+    font-family: inherit;
+    width: 70px;
+    height: auto;
+    
+}

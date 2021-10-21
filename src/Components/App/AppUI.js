@@ -1,5 +1,5 @@
 import React from 'react';
-import  {TodoContext}  from '../TodoContext';
+import { TodoContext }  from '../TodoContext';
 import { Todotitle } from '../Todotitle';
 import { Todocounter } from '../Todocounter';
 import { Todosearch } from '../Todosearch';
@@ -12,6 +12,11 @@ import { Error } from '../Error';
 import { Loading } from '../Loading';
 import { Modal } from '../Modal';
 import { Todoform } from '../Todoform';
+import { Appbutton } from '../Appbutton';
+import { Modalapp } from '../Modalapp';
+import { Autorbutton } from '../Autorbutton';
+import { Modalautor } from '../Modalautor';
+ 
 
 
 function AppUI(){
@@ -23,8 +28,11 @@ function AppUI(){
         searchedTodos,
         completeTodo,
         deleteTodo,
-        openModal,
-        setOpenModal
+        openModal,     
+        openModalApp,
+        openModalAutor,
+                            
+        
     }=React.useContext(TodoContext);
 
     //Maquetacion UI
@@ -57,26 +65,19 @@ function AppUI(){
                         )
                     )}
                                     
-                </Todolist>  
+                </Todolist>             
+                             
+          {(!!openModal && <Modal><Todoform/></Modal>) || 
+          (!!openModalApp && <Modal><Modalapp/></Modal>) ||
+          (!!openModalAutor && <Modal><Modalautor/></Modal>)}
+             
+          {(!openModalApp && <Createtodobutton />) && (!openModalAutor && <Createtodobutton />)}
+       
+            <Todofooter>
+                  <Appbutton /> 
+                  <Autorbutton />                     
+            </Todofooter>
 
-             {!!openModal &&(
-
-                 //el modal se muestra solo si el estado openModal es verdadero
-                <Modal>
-
-                    <Todoform />
-
-                {/*<p>searchedTodos[0]?.text }</p> */          
-                /*Se consulta primero con ?, si el localstorage cargo los todos,para ahi imprimir el texto*/}           
-
-                </Modal> 
-             )}     
-
-            <Createtodobutton
-             setOpenModal={setOpenModal}       
-            />
-
-        <Todofooter/>
     </React.Fragment>  
     );
 }

@@ -1,0 +1,38 @@
+.modalautor{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;  
+    border:2px solid white;
+    width: 65%;
+    height: 200px;
+    margin-bottom: 10px;
+    max-width: 500px;
+}
+
+
+.modalautor h2{
+
+    font-size: 1.8rem;
+    color: white;
+    font-family: inherit;
+}
+
+
+.modalautor p{
+
+    font-size: 1.5rem;
+    color: white;
+    font-family: inherit;
+}
+
+.closebutton{
+
+    background-color: white;
+    color:black;
+    padding: 10px ;
+    font-family: inherit;
+    width: 70px;
+    height: auto;
+    
+}
