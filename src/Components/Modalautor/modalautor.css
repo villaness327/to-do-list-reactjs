@@ -4,9 +4,9 @@
     justify-content: center;
     align-items: center;  
     border:2px solid white;
-    width: 65%;
+    width: 75%;
     height: 200px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     max-width: 500px;
 }
 
@@ -21,7 +21,7 @@
 
 .modalautor p{
 
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: white;
     font-family: inherit;
 }
@@ -34,5 +34,6 @@
     font-family: inherit;
     width: 70px;
     height: auto;
+    font-size: 1.6rem;
     
 }

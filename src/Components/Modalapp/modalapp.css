@@ -18,9 +18,9 @@
 .modalapp p,
 .modalapp ul{
 
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: white;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .modalapp button{
@@ -31,5 +31,6 @@
     font-family: inherit;
     width: 70px;
     height: auto;
+    font-size: 1.6rem;
     
 }
