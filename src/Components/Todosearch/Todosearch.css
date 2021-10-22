@@ -11,6 +11,7 @@
     border: none;
     border-radius: 5px;
     margin-bottom: 10px;
+    font-size: 1.8rem;
 }
 
 .Todosearch:focus{
@@ -23,10 +24,6 @@ outline-color:orange;
 .Todosearch::placeholder{
 
     font-weight: 400;
-    font-size: 1.5rem;
-
-
-
-
+    font-size: 1.8rem;
 
 }
