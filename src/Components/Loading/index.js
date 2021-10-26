@@ -8,7 +8,7 @@ function Loading(){
 
  return(
 
-  <p className="loadingText">Se esta cargando la información...</p>
+  <p className="loadingText">Se esta cargando la información</p>
   
  );
 
