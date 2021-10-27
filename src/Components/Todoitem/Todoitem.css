@@ -31,18 +31,3 @@
     font-size: 2.5rem;
 }
 
-.Todo_Item--Check{ 
-
-    position: absolute;
-    left: 0px;
-    color:red;
-    content: "\2611";
-    font-size: 3.0rem;
-  
-}
-   
-.Check_Complete{
- 
-    color:green;
-
-}

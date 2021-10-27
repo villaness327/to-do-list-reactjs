@@ -59,7 +59,7 @@ function AppUI(){
                     <Todoitem
                         key={todo.text}    //Se envia el key
                         text={todo.text}   //Se envia texto
-                        complete={todo.complete} //estado completado true o false
+                        completed={todo.completed} //estado completado true o false
                         onComplete={()=>completeTodo(todo.text)}//Se envia la funcion como props
                         onDelete={()=>deleteTodo(todo.text)}/>                                
                         )

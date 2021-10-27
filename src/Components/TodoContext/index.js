@@ -25,7 +25,7 @@ function TodoProvider(props){
   const [openModalAutor, setOpenModalAutor]=React.useState(false);
   //React hook de estado para modal autor
    
-  const completedTodos=todos.filter(todo=>todo.complete===true).length;
+  const completedTodos=todos.filter(todo=>todo.completed===true).length;
   const totalTodos=todos.length;
 
   let searchedTodos=[];
@@ -55,7 +55,7 @@ function TodoProvider(props){
 
           newTodos.push({
             text:text,
-            complete:false,
+            completed:false,
           });
 
           saveTodos(newTodos);
@@ -71,7 +71,7 @@ function TodoProvider(props){
 
        const newTodos=[...todos];//Se copia el array del estado orginal
 
-       newTodos[todoIndex].complete=!newTodos[todoIndex].complete;
+       newTodos[todoIndex].completed=!newTodos[todoIndex].completed;
        //El valor de complete, va a cambiar siempre al estado contrario, cada vez que 
        //se ejecuta la funcion
 
