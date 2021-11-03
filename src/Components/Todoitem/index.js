@@ -10,8 +10,7 @@ function Todoitem(props){
  //El componente <CompleteIcon /> es la funcion que envuelve el componente TodoIcon, y al cual
  //se le envian las props, y este a su vez se las envia al componente TodoIcon
     return(
-            <li className="Todo_Item">
-                  
+            <li className="Todo_Item">                  
               <CompleteIcon                 
                 completed={props.completed}
                 onComplete={props.onComplete}              
